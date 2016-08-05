@@ -83,3 +83,17 @@ void AMainHero::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 }
 
+float AMainHero::GetDirection()
+{
+	FVector VelNorm = GetVelocity();
+	VelNorm.Normalize();
+	FVector ForwardVec = GetActorForwardVector();
+	FVector RightVec = GetActorRightVector();
+
+	float start = -1 * Dot3(VelNorm, ForwardVec);
+	float target = Dot3(VelNorm, RightVec);
+	FRotator result = UKismetMathLibrary::FindLookAtRotation(FVector(start, 0.0f, 0.0f), FVector(0.0f, target, 0.0f));
+
+	return result.Yaw;
+}
+

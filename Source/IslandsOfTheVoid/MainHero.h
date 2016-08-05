@@ -23,6 +23,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	/* Calculate direction character */
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = Locomotion)
+	float GetDirection();
+
 	/* Returns TopDownCameraComponent subobject */
 	FORCEINLINE class UCameraComponent* GetTopDownCameraComponent() const { return TopDownCameraComponent; }
 	/* Returns CameraBoom subobject */
