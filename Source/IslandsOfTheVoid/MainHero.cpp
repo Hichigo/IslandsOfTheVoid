@@ -2,6 +2,7 @@
 
 #include "IslandsOfTheVoid.h"
 #include "MainHero.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -16,7 +17,7 @@ AMainHero::AMainHero()
 	bUseControllerRotationRoll = false;
 
 	// Configure character movement
-	GetCharacterMovement()->bOrientRotationToMovement = true; // Rotate character to moving direction
+	GetCharacterMovement()->bOrientRotationToMovement = false; // Rotate character to moving direction
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 640.f, 0.f);
 	GetCharacterMovement()->bConstrainToPlane = true;
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
@@ -28,6 +29,7 @@ AMainHero::AMainHero()
 	CameraBoom->TargetArmLength = 800.f;
 	CameraBoom->RelativeRotation = FRotator(-60.f, 0.f, 0.f);
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
+	CameraBoom->bUsePawnControlRotation = false;
 
 	// Create a camera...
 	TopDownCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
@@ -46,6 +48,9 @@ void AMainHero::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	PC = Cast<APlayerController>(GetController());
+
+	PC->bShowMouseCursor = true;
 }
 
 // Called every frame
@@ -53,6 +58,22 @@ void AMainHero::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
+	FRotator NewRotation;
+	FVector2D ScreenPosPlayer;
+	FVector MousePos;
+
+	MousePos.Z = 0.0f;
+	PC->GetMousePosition(MousePos.X, MousePos.Y);
+	UGameplayStatics::ProjectWorldToScreen(PC, GetActorLocation(), ScreenPosPlayer);
+	NewRotation = UKismetMathLibrary::FindLookAtRotation(FVector(ScreenPosPlayer.X, ScreenPosPlayer.Y, 0.0f), MousePos);
+	
+	NewRotation.Roll =  GetActorRotation().Roll;
+	NewRotation.Pitch = GetActorRotation().Pitch;
+	NewRotation.Yaw = NewRotation.Yaw + 90;
+
+	NewRotation = UKismetMathLibrary::RInterpTo(GetActorRotation(), NewRotation, DeltaTime, 10);
+	SetActorRotation(NewRotation);
+	
 }
 
 // Called to bind functionality to input
