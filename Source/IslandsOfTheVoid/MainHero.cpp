@@ -18,7 +18,7 @@ AMainHero::AMainHero()
 
 	// Configure character movement
 	GetCharacterMovement()->bOrientRotationToMovement = false; // Rotate character to moving direction
-	GetCharacterMovement()->RotationRate = FRotator(0.f, 640.f, 0.f);
+	GetCharacterMovement()->RotationRate = FRotator(0.f, 360.f, 0.f);
 	GetCharacterMovement()->bConstrainToPlane = true;
 	GetCharacterMovement()->bSnapToPlaneAtStart = true;
 
@@ -87,6 +87,7 @@ float AMainHero::GetDirection()
 {
 	FVector VelNorm = GetVelocity();
 	VelNorm.Normalize();
+	//UE_LOG(LogTemp, Warning, TEXT("X: %f - Y: %f - Z: %f"), VelNorm.X, VelNorm.Y, VelNorm.Z);
 	FVector ForwardVec = GetActorForwardVector();
 	FVector RightVec = GetActorRightVector();
 
