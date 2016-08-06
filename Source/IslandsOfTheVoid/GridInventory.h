@@ -8,12 +8,15 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class ISLANDSOFTHEVOID_API UGridInventory : public UUserWidget
 {
 	GENERATED_BODY()
+
 	
-	
-	
-	
+
+public:
+
+	//virtual bool OnDrop(FGeometry MyGeometry, FPointerEvent PointerEvent, UDragDropOperation *Operation) override;
+
 };

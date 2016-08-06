@@ -4,5 +4,12 @@
 #include "GridInventory.h"
 
 
-
-
+//bool UGridInventory::OnDrop(FGeometry MyGeometry, FPointerEvent PointerEvent, UDragDropOperation *Operation)
+//{
+//
+//	return true;
+//}
+//UGridInventory::UGridInventory()
+//{
+//	grid = CreateDefaultSubobject<UGridPanel>(TEXT("GridPanel"));
+//}
