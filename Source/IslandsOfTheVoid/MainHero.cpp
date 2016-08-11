@@ -41,6 +41,8 @@ AMainHero::AMainHero()
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
+
+	TargetLook.Z = 0.0f;
 }
 
 // Called when the game starts or when spawned
@@ -60,12 +62,11 @@ void AMainHero::Tick( float DeltaTime )
 
 	FRotator NewRotation;
 	FVector2D ScreenPosPlayer;
-	FVector MousePos;
+	
+	PC->GetMousePosition(TargetLook.X, TargetLook.Y);
 
-	MousePos.Z = 0.0f;
-	PC->GetMousePosition(MousePos.X, MousePos.Y);
 	UGameplayStatics::ProjectWorldToScreen(PC, GetActorLocation(), ScreenPosPlayer);
-	NewRotation = UKismetMathLibrary::FindLookAtRotation(FVector(ScreenPosPlayer.X, ScreenPosPlayer.Y, 0.0f), MousePos);
+	NewRotation = UKismetMathLibrary::FindLookAtRotation(FVector(ScreenPosPlayer.X, ScreenPosPlayer.Y, 0.0f), TargetLook);
 	
 	NewRotation.Roll =  GetActorRotation().Roll;
 	NewRotation.Pitch = GetActorRotation().Pitch;
