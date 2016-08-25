@@ -80,6 +80,8 @@ AMainHero::AMainHero()
 
 	//for 2d look (screen space)
 	TargetLook.Z = 0.0f;
+
+	
 }
 
 // Called when the game starts or when spawned
