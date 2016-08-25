@@ -42,6 +42,43 @@ AMainHero::AMainHero()
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
 
+	SM_Head = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Head"));
+	SM_Head->SetupAttachment(RootComponent);
+
+	SM_Chest = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Chest"));
+	SM_Chest->SetupAttachment(RootComponent);
+
+	SM_Belt = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Belt"));
+	SM_Belt->SetupAttachment(RootComponent);
+
+	SM_Pants = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Pants"));
+	SM_Pants->SetupAttachment(RootComponent);
+
+	SM_Boots = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Boots"));
+	SM_Boots->SetupAttachment(RootComponent);
+
+	SM_Neck = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Neck"));
+	SM_Neck->SetupAttachment(RootComponent);
+
+	SM_Shoulder = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Shoulder"));
+	SM_Shoulder->SetupAttachment(RootComponent);
+
+	SM_Gloves = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Gloves"));
+	SM_Gloves->SetupAttachment(RootComponent);
+
+	SM_RingRight = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("RingRight"));
+	SM_RingRight->SetupAttachment(RootComponent);
+
+	SM_RingLeft = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("RingLeft"));
+	SM_RingLeft->SetupAttachment(RootComponent);
+
+	SM_RightHand = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("RightHand"));
+	SM_RightHand->SetupAttachment(RootComponent);
+
+	SM_LeftHand = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LeftHand"));
+	SM_LeftHand->SetupAttachment(RootComponent);
+
+	//for 2d look (screen space)
 	TargetLook.Z = 0.0f;
 }
 

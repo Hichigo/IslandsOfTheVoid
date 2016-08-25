@@ -33,6 +33,12 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
 private:
+	/* Look player vector */
+	FVector TargetLook;
+
+	/* Player controller */
+	APlayerController* PC;
+
 	/* Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TopDownCameraComponent;
@@ -41,9 +47,52 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
+	/* Skeletal Mesh head equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Head;
+	
+	/* Skeletal Mesh chest equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Chest;
 
-	FVector TargetLook;
+	/* Skeletal Mesh belt equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Belt;
 
-	/* Player controller */
-	APlayerController* PC;
+	/* Skeletal Mesh pants equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Pants;
+
+	/* Skeletal Mesh boots equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Boots;
+
+	/* Skeletal Mesh neck equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Neck;
+
+	/* Skeletal Mesh shoulder equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Shoulder;
+
+	/* Skeletal Mesh gloves equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_Gloves;
+
+	/* Skeletal Mesh ring right equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_RingRight;
+
+	/* Skeletal Mesh ring left equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_RingLeft;
+
+	/* Skeletal Mesh right hand equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_RightHand;
+
+	/* Skeletal Mesh lefy hand equipment */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = EquipMesh, meta = (AllowPrivateAccess = "true"))
+	class USkeletalMeshComponent *SM_LeftHand;
 };
+
