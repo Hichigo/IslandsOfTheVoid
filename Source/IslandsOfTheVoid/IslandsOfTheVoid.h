@@ -3,7 +3,7 @@
 #ifndef __ISLANDSOFTHEVOID_H__
 #define __ISLANDSOFTHEVOID_H__
 
-#include "EngineMinimal.h"
+#include "Engine.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogIslandsOfTheVoid, Log, All);
 
